@@ -4,6 +4,11 @@
  */
 package Views;
 
+import Controlador.SisLAB;
+import Negocio.PacienteView;
+import Negocio.PracticaView;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author lucho
@@ -28,8 +33,8 @@ public class vtnPracticaBaja extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        txtCodigo = new javax.swing.JTextField();
+        btnConfirmarBaja = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -46,7 +51,7 @@ public class vtnPracticaBaja extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(34, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -55,11 +60,16 @@ public class vtnPracticaBaja extends javax.swing.JFrame {
                 .addGap(24, 24, 24)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(56, Short.MAX_VALUE))
         );
 
-        jButton1.setText("Confirmar");
+        btnConfirmarBaja.setText("Confirmar");
+        btnConfirmarBaja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConfirmarBajaActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Cancelar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -81,7 +91,7 @@ public class vtnPracticaBaja extends javax.swing.JFrame {
                         .addGap(14, 14, 14)
                         .addComponent(jButton2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1)))
+                        .addComponent(btnConfirmarBaja)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -91,7 +101,7 @@ public class vtnPracticaBaja extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(btnConfirmarBaja)
                     .addComponent(jButton2))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -103,6 +113,29 @@ public class vtnPracticaBaja extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void btnConfirmarBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarBajaActionPerformed
+        // TODO add your handling code here:
+         if (txtCodigo.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(txtCodigo, "Complete el campo Codigo de practica");
+        } else {
+            PracticaView practica = SisLAB.getInstancia().buscarPracticaView(txtCodigo.getText());
+            if (practica != null) {
+                if (JOptionPane.showConfirmDialog(btnConfirmarBaja,
+                        "¿Esta seguro de eliminar el paciente?", "Salir", JOptionPane.YES_NO_OPTION,
+                        JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION) {
+                    SisLAB.getInstancia().BorrarPractica(txtCodigo.getText());
+
+                    JOptionPane.showMessageDialog(null, "Practica eliminada");
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Practica no encontrada");
+
+            }
+        }
+
+    }//GEN-LAST:event_btnConfirmarBajaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -141,10 +174,10 @@ public class vtnPracticaBaja extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnConfirmarBaja;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField txtCodigo;
     // End of variables declaration//GEN-END:variables
 }

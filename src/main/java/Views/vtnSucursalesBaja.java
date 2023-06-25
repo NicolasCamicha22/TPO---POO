@@ -4,6 +4,11 @@
  */
 package Views;
 
+import Controlador.SisLAB;
+import Negocio.PacienteView;
+import Negocio.SucursalView;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author lucho
@@ -28,8 +33,8 @@ public class vtnSucursalesBaja extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
+        txtNroSucursal = new javax.swing.JTextField();
+        btnConfirmarBaja = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -38,7 +43,12 @@ public class vtnSucursalesBaja extends javax.swing.JFrame {
 
         jLabel1.setText("ingrese numero de sucursal:");
 
-        jButton2.setText("Confirmar");
+        btnConfirmarBaja.setText("Confirmar");
+        btnConfirmarBaja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConfirmarBajaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -48,11 +58,11 @@ public class vtnSucursalesBaja extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
+                .addComponent(txtNroSucursal, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addComponent(btnConfirmarBaja)
                 .addGap(21, 21, 21))
         );
         jPanel1Layout.setVerticalGroup(
@@ -61,9 +71,9 @@ public class vtnSucursalesBaja extends javax.swing.JFrame {
                 .addGap(10, 10, 10)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNroSucursal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addComponent(btnConfirmarBaja)
                 .addContainerGap())
         );
 
@@ -105,6 +115,28 @@ public class vtnSucursalesBaja extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void btnConfirmarBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarBajaActionPerformed
+        // TODO add your handling code here:
+        if (txtNroSucursal.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(txtNroSucursal, "Complete el campo Nro Sucursal");
+        } else {
+            SucursalView sucursal = SisLAB.getInstancia().buscarSucursalView(txtNroSucursal.getText());
+            if (sucursal != null) {
+                if (JOptionPane.showConfirmDialog(btnConfirmarBaja,
+                        "¿Esta seguro de eliminar la sucursal?", "Salir", JOptionPane.YES_NO_OPTION,
+                        JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION) {
+                    SisLAB.getInstancia().BorrarSucursal(txtNroSucursal.getText());
+
+                    JOptionPane.showMessageDialog(null, "Sucursal eliminada");
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Sucursal no encontrada");
+
+            }
+        }
+    }//GEN-LAST:event_btnConfirmarBajaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -141,10 +173,10 @@ public class vtnSucursalesBaja extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnConfirmarBaja;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField txtNroSucursal;
     // End of variables declaration//GEN-END:variables
 }

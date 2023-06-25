@@ -4,6 +4,11 @@
  */
 package Views;
 
+import Controlador.SisLAB;
+import Negocio.PacienteView;
+import Negocio.SucursalView;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author lucho
@@ -31,9 +36,9 @@ public class vtnSucursalesAltaEdita extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        txtNroSucursal = new javax.swing.JTextField();
+        txtDireccion = new javax.swing.JTextField();
+        txtResponsable = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -65,9 +70,9 @@ public class vtnSucursalesAltaEdita extends javax.swing.JFrame {
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField1)
-                    .addComponent(jTextField2)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE))
+                    .addComponent(txtNroSucursal)
+                    .addComponent(txtDireccion)
+                    .addComponent(txtResponsable, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE))
                 .addContainerGap(54, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -76,19 +81,24 @@ public class vtnSucursalesAltaEdita extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNroSucursal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtResponsable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
         jButton2.setText("Confirmar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -123,6 +133,50 @@ public class vtnSucursalesAltaEdita extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        if (txtNroSucursal.getText().isEmpty() || txtDireccion.getText().isEmpty()
+						|| txtResponsable.getText().isEmpty()) {
+					JOptionPane.showMessageDialog(txtNroSucursal, "Complete todos los campos");
+        }  else {
+            try {
+                
+            
+            SucursalView sucursal = SisLAB.getInstancia().buscarSucursalView(txtNroSucursal.getText());
+            if (sucursal == null){
+                // Alta sucursal
+                
+                int nroSucursal = Integer.parseInt(txtNroSucursal.getText());
+        
+                
+                SisLAB.getInstancia().altaSucursal(txtNroSucursal.getText(),txtDireccion.getText(), txtResponsable.getText());
+                
+                JOptionPane.showMessageDialog(null, "Alta efectuada");
+                
+                txtNroSucursal.setText("");
+                txtDireccion.setText("");
+                txtResponsable.setText("");
+               
+                
+                
+                
+								
+                                                                
+
+                
+            } else {
+                JOptionPane.showMessageDialog(null, "Sucursal ya registrada");
+            }
+            
+            
+        }catch (Exception ex){
+            JOptionPane.showMessageDialog(null, "Debe ingresar solo numeros en el Nro de sucursal", "",
+								JOptionPane.ERROR_MESSAGE);
+            
+        }
+        } 
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -167,8 +221,8 @@ public class vtnSucursalesAltaEdita extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField txtDireccion;
+    private javax.swing.JTextField txtNroSucursal;
+    private javax.swing.JTextField txtResponsable;
     // End of variables declaration//GEN-END:variables
 }

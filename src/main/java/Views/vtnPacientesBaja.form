@@ -64,7 +64,7 @@
                       <Group type="102" attributes="0">
                           <Component id="lblDniPaciente" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="txtDniPaciente" min="-2" pref="167" max="-2" attributes="0"/>
+                          <Component id="txtDni" min="-2" pref="167" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace pref="23" max="32767" attributes="0"/>
@@ -77,7 +77,7 @@
                   <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="lblDniPaciente" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtDniPaciente" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtDni" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="37" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -95,12 +95,15 @@
             <Property name="text" type="java.lang.String" value="Ingrese DNI Paciente:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtDniPaciente">
+        <Component class="javax.swing.JTextField" name="txtDni">
         </Component>
         <Component class="javax.swing.JButton" name="btnConfirmarBaja">
           <Properties>
             <Property name="text" type="java.lang.String" value="Confirmar Baja"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnConfirmarBajaActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnCancelar">
           <Properties>
