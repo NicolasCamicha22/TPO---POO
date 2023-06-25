@@ -135,7 +135,7 @@ public class vtnPacientes extends javax.swing.JFrame {
 
     private void btnEditarPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarPacienteActionPerformed
         // TODO add your handling code here:
-        vtnPacientesAltaEdita pnlPacientes = new vtnPacientesAltaEdita();
+        vtnPacientesEdita pnlPacientes = new vtnPacientesEdita();
         pnlPacientes.setLocationRelativeTo(null);
         pnlPacientes.setVisible(true);
         

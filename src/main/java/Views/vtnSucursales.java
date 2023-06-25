@@ -71,9 +71,9 @@ public class vtnSucursales extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnNuevaSucursal)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(btnEditarSucursal)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                 .addComponent(btnBajaSucursal)
                 .addGap(16, 16, 16))
         );
@@ -94,7 +94,7 @@ public class vtnSucursales extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(164, 164, 164)
@@ -128,7 +128,7 @@ public class vtnSucursales extends javax.swing.JFrame {
 
     private void btnEditarSucursalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarSucursalActionPerformed
         // TODO add your handling code here:
-        vtnSucursalesAltaEdita v = new vtnSucursalesAltaEdita();
+        vtnSucursalesEdita v = new vtnSucursalesEdita();
         v.setLocationRelativeTo(null);
         v.setVisible(true);
     }//GEN-LAST:event_btnEditarSucursalActionPerformed

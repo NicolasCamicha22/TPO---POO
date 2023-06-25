@@ -4,6 +4,10 @@
  */
 package Views;
 
+import Controlador.SisLAB;
+import Negocio.PacienteView;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author lucho
@@ -28,7 +32,7 @@ public class vtnPacientesBaja extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         lblDniPaciente = new javax.swing.JLabel();
-        txtDniPaciente = new javax.swing.JTextField();
+        txtDni = new javax.swing.JTextField();
         btnConfirmarBaja = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
 
@@ -39,6 +43,11 @@ public class vtnPacientesBaja extends javax.swing.JFrame {
         lblDniPaciente.setText("Ingrese DNI Paciente:");
 
         btnConfirmarBaja.setText("Confirmar Baja");
+        btnConfirmarBaja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConfirmarBajaActionPerformed(evt);
+            }
+        });
 
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -61,7 +70,7 @@ public class vtnPacientesBaja extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(lblDniPaciente)
                         .addGap(18, 18, 18)
-                        .addComponent(txtDniPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtDni, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -70,7 +79,7 @@ public class vtnPacientesBaja extends javax.swing.JFrame {
                 .addGap(14, 14, 14)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblDniPaciente)
-                    .addComponent(txtDniPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtDni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnConfirmarBaja)
@@ -102,6 +111,30 @@ public class vtnPacientesBaja extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void btnConfirmarBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarBajaActionPerformed
+        // TODO add your handling code here:
+        if (txtDni.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(txtDni, "Complete el campo DNI");
+        } else {
+            PacienteView paciente = SisLAB.getInstancia().buscarPacienteView(txtDni.getText());
+            if (paciente != null) {
+                if (JOptionPane.showConfirmDialog(btnConfirmarBaja,
+                        "¿Esta seguro de eliminar el paciente?", "Salir", JOptionPane.YES_NO_OPTION,
+                        JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION) {
+                    SisLAB.getInstancia().BorrarPaciente(txtDni.getText());
+
+                    JOptionPane.showMessageDialog(null, "Paciente eliminado");
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Paciente no encontrado");
+
+            }
+        }
+
+
+    }//GEN-LAST:event_btnConfirmarBajaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -143,6 +176,6 @@ public class vtnPacientesBaja extends javax.swing.JFrame {
     private javax.swing.JButton btnConfirmarBaja;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblDniPaciente;
-    private javax.swing.JTextField txtDniPaciente;
+    private javax.swing.JTextField txtDni;
     // End of variables declaration//GEN-END:variables
 }

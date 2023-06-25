@@ -4,6 +4,11 @@
  */
 package Views;
 
+import Controlador.SisLAB;
+import Negocio.PeticionView;
+import Negocio.SucursalView;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author lucho
@@ -33,12 +38,12 @@ public class vtnPeticionesAltaEdita extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
+        txtNroPeticion = new javax.swing.JTextField();
+        txtPaciente = new javax.swing.JTextField();
+        txtObraSocial = new javax.swing.JTextField();
+        txtFechaDeCarga = new javax.swing.JTextField();
+        txtPracticasAsociadas = new javax.swing.JTextField();
+        txtFechaEstimadaEntrega = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
@@ -58,9 +63,9 @@ public class vtnPeticionesAltaEdita extends javax.swing.JFrame {
 
         jLabel6.setText("Fecha estimada de Entrega:");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        txtNroPeticion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                txtNroPeticionActionPerformed(evt);
             }
         });
 
@@ -79,12 +84,12 @@ public class vtnPeticionesAltaEdita extends javax.swing.JFrame {
                     .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField1)
-                    .addComponent(jTextField2)
-                    .addComponent(jTextField3)
-                    .addComponent(jTextField4)
-                    .addComponent(jTextField5)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE))
+                    .addComponent(txtNroPeticion)
+                    .addComponent(txtPaciente)
+                    .addComponent(txtObraSocial)
+                    .addComponent(txtFechaDeCarga)
+                    .addComponent(txtPracticasAsociadas)
+                    .addComponent(txtFechaEstimadaEntrega, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE))
                 .addGap(32, 32, 32))
         );
         jPanel1Layout.setVerticalGroup(
@@ -92,32 +97,37 @@ public class vtnPeticionesAltaEdita extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNroPeticion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtObraSocial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtFechaDeCarga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPracticasAsociadas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtFechaEstimadaEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 30, Short.MAX_VALUE))
         );
 
         jButton1.setText("Confirmar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Cancelar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -158,14 +168,66 @@ public class vtnPeticionesAltaEdita extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void txtNroPeticionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNroPeticionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_txtNroPeticionActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        if (txtNroPeticion.getText().isEmpty() || txtPaciente.getText().isEmpty()
+						|| txtObraSocial.getText().isEmpty()
+                || txtFechaDeCarga.getText().isEmpty()
+                || txtPracticasAsociadas.getText().isEmpty()
+                || txtFechaEstimadaEntrega.getText().isEmpty()) {
+					JOptionPane.showMessageDialog(txtNroPeticion, "Complete todos los campos");
+        }  else {
+            try {
+                
+            
+            PeticionView peticion = SisLAB.getInstancia().buscarPeticionView(txtNroPeticion.getText());
+            if (peticion == null){
+                // Alta sucursal
+                
+                int nroPeticion = Integer.parseInt(txtNroPeticion.getText());
+                int obraSocial = Integer.parseInt(txtObraSocial.getText());
+        
+                
+                SisLAB.getInstancia().altaPeticion(txtNroPeticion.getText(),txtPaciente.getText(), txtObraSocial.getText(), txtFechaDeCarga.getText(),txtPracticasAsociadas.getText(),txtFechaEstimadaEntrega.getText());
+                
+                
+                JOptionPane.showMessageDialog(null, "Alta efectuada");
+                
+                txtNroPeticion.setText("");
+                txtPaciente.setText("");
+                txtObraSocial.setText("");
+                txtFechaDeCarga.setText("");
+                txtPracticasAsociadas.setText("");
+                txtFechaEstimadaEntrega.setText("");
+               
+                
+                
+                
+								
+                                                                
+
+                
+            } else {
+                JOptionPane.showMessageDialog(null, "Peticion ya registrada");
+            }
+            
+            
+        }catch (Exception ex){
+            JOptionPane.showMessageDialog(null, "Debe ingresar solo numeros en el Nro de sucursal y en la Obra social", "",
+								JOptionPane.ERROR_MESSAGE);
+            
+        }
+        }                                     
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -213,11 +275,11 @@ public class vtnPeticionesAltaEdita extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField txtFechaDeCarga;
+    private javax.swing.JTextField txtFechaEstimadaEntrega;
+    private javax.swing.JTextField txtNroPeticion;
+    private javax.swing.JTextField txtObraSocial;
+    private javax.swing.JTextField txtPaciente;
+    private javax.swing.JTextField txtPracticasAsociadas;
     // End of variables declaration//GEN-END:variables
 }
