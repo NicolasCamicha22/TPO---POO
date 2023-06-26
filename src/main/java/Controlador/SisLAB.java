@@ -36,8 +36,8 @@ public class SisLAB {
         cargaInicial();
     }
 
-    private void cargaInicial() {
-        darDeAltaPaciente("42323", "nicolas", "moron 777", "mailito@gmail.com", "masuclino", 22);
+    private void cargaInicial() { //datos hardcodeados
+        darDeAltaPaciente("42323", "nicolas", "moron 777", "mailito@gmail.com", "masculino", 22);
         altaSucursal("2322", "callefalsa 123", "Carlos");
         altaPeticion("111", "Tomas", "11113", "4/05/2023", "4", "25/3/2022");
         altaPractica("22","Analisis de sangre","A","43","208",24,"sin problemas");

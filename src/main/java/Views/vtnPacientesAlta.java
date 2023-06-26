@@ -13,12 +13,12 @@ import javax.swing.JTextField;
  *
  * @author lucho
  */
-public class vtnPacientesAltaEdita extends javax.swing.JFrame {
+public class vtnPacientesAlta extends javax.swing.JFrame {
 
     /**
      * Creates new form vtnPacientesAlta
      */
-    public vtnPacientesAltaEdita() {
+    public vtnPacientesAlta() {
         initComponents();
     }
 
@@ -31,7 +31,7 @@ public class vtnPacientesAltaEdita extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
+        btnConfirmar = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -49,10 +49,10 @@ public class vtnPacientesAltaEdita extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("Confirmar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnConfirmar.setText("Confirmar");
+        btnConfirmar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnConfirmarActionPerformed(evt);
             }
         });
 
@@ -170,7 +170,7 @@ public class vtnPacientesAltaEdita extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1)))
+                        .addComponent(btnConfirmar)))
                 .addContainerGap(14, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -181,7 +181,7 @@ public class vtnPacientesAltaEdita extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
-                    .addComponent(jButton1))
+                    .addComponent(btnConfirmar))
                 .addContainerGap(17, Short.MAX_VALUE))
         );
 
@@ -199,7 +199,7 @@ public class vtnPacientesAltaEdita extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
         // TODO add your handling code here:
         if (txtDni.getText().isEmpty() || txtNombre.getText().isEmpty() 
                 || txtDomicilio.getText().isEmpty() || txtMail.getText().isEmpty()
@@ -229,13 +229,8 @@ public class vtnPacientesAltaEdita extends javax.swing.JFrame {
                 txtMail.setText("");
                 txtSexo.setText("");
                 txtEdad.setText("");
-                
-                
-                
-								
-                                                                
-
-                
+                               
+                                                                                          
             } else {
                 JOptionPane.showMessageDialog(null, "Paciente ya registrado");
             }
@@ -250,7 +245,7 @@ public class vtnPacientesAltaEdita extends javax.swing.JFrame {
         
         
                
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnConfirmarActionPerformed
 
     private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
         // TODO add your handling code here:
@@ -277,27 +272,29 @@ public class vtnPacientesAltaEdita extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(vtnPacientesAltaEdita.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(vtnPacientesAlta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(vtnPacientesAltaEdita.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(vtnPacientesAlta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(vtnPacientesAltaEdita.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(vtnPacientesAlta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(vtnPacientesAltaEdita.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(vtnPacientesAlta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new vtnPacientesAltaEdita().setVisible(true);
+                new vtnPacientesAlta().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnConfirmar;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

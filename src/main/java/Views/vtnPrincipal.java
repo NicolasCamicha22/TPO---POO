@@ -14,12 +14,15 @@ package Views;
  * @author lucho
  */
 public class vtnPrincipal extends javax.swing.JFrame {
+    
+    
 
     /**
      * Creates new form vtnFrameForm
      */
     public vtnPrincipal() {
         initComponents();
+        
     }
 
     /**
@@ -201,6 +204,7 @@ public class vtnPrincipal extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new vtnPrincipal().setVisible(true);
+                
             }
         });
     }
