@@ -47,7 +47,7 @@ public class vtnPacientesAlta extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         txtEdad = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         btnConfirmar.setText("Confirmar");
         btnConfirmar.addActionListener(new java.awt.event.ActionListener() {
@@ -229,6 +229,8 @@ public class vtnPacientesAlta extends javax.swing.JFrame {
                 txtMail.setText("");
                 txtSexo.setText("");
                 txtEdad.setText("");
+                
+                this.dispose();
                                
                                                                                           
             } else {
