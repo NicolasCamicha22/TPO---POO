@@ -4,9 +4,12 @@
  */
 package Views;
 
+import Controlador.SisLAB;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.*;
+
+import Negocio.*;
 
 /**
  *
@@ -24,36 +27,37 @@ public class vtnPacientes extends javax.swing.JFrame {
         String[] titulos = new String[]{"DNI","Paciente","Domicilio","Mail","Sexo","Edad"};
         modelo.setColumnIdentifiers(titulos);
         
-        String [] paciente1 = {"33443284","Luciano Arias","Pedraza 2566","lucho@uade.com","M","35"};
+        /*
+        SisLAB.getInstancia().darDeAltaPaciente("33443284","Luciano Arias","Pedraza 2566","lucho@uade.com","M",35);
         String [] paciente2 = {"32456232","Marcelo Reynoso","Santa Fe 66","marcelo@yahoo.com","M","43"};
         String [] paciente3 = {"16546789","Emilse Giovanetti","Brasil 1234","emilseo@gmail.com","F","74"};
         String [] paciente4 = {"21654765","Josefina Constanzo","Maimaira 564","rollinga@uade.com","F","19"};
         String [] paciente5 = {"23511334","Johan Veneco","Alberdi 56","Johan@veneco.vz","M","48"};
-        
+        */
+        /*
         modelo.addRow(paciente1);
         modelo.addRow(paciente2);
         modelo.addRow(paciente3);
         modelo.addRow(paciente4);
         modelo.addRow(paciente5);
+        */
         
         
+        Paciente listado = SisLAB.getInstancia().listarPacientes();
+        
+        
+        
+        
+        //System.out.println(listado.getMail());
+        
+      
+        
+ 
+      
+         
+   
         
         tblDatos.setModel(modelo);
-        
-        
-        
-        
-        
-        
-        //String [] paciente = {"33443284","Luciano Arias"};
-        
-        //modelo.addRow(paciente);
-        
-        //JTable tabla = new JTable(modelo);
-        //JScrollPane scroll = new JScrollPane();
-        //scroll.add(tabla);
-        //add(scroll);
-     
     }
     
     

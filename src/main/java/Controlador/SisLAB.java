@@ -38,6 +38,12 @@ public class SisLAB {
 
     private void cargaInicial() { //datos hardcodeados
         darDeAltaPaciente("42323", "nicolas", "moron 777", "mailito@gmail.com", "masculino", 22);
+        darDeAltaPaciente("33443284","Luciano Arias","Pedraza 2566","lucho@uade.com","M",35);
+        darDeAltaPaciente("32456232","Marcelo Reynoso","Santa Fe 66","marcelo@yahoo.com","M",43);
+        darDeAltaPaciente("16546789","Emilse Giovanetti","Brasil 1234","emilseo@gmail.com","F",74);
+        darDeAltaPaciente("21654765","Josefina Constanzo","Maimaira 564","rollinga@uade.com","F",19);
+        darDeAltaPaciente("23511334","Johan Veneco","Alberdi 56","Johan@veneco.vz","M",48);
+  
         altaSucursal("2322", "callefalsa 123", "Carlos");
         altaPeticion("111", "Tomas", "11113", "4/05/2023", "4", "25/3/2022");
         altaPractica("22","Analisis de sangre","A","43","208",24,"sin problemas");
@@ -81,6 +87,17 @@ public class SisLAB {
 
         return null;
     }
+    
+    //Listar Pacientes
+    public Paciente listarPacientes(){
+        
+        for(int i = 0; i < listaPacientes.size(); i++){
+            Paciente  paciente = listaPacientes.get(i);
+            System.out.println(paciente.getNombre());
+        }
+        return null;
+    }
+       
 
     public PacienteView buscarPacienteView(String dni) {
         Paciente paciente = buscarPaciente(dni);
@@ -89,6 +106,7 @@ public class SisLAB {
         }
         return null;
     }
+    
     //Modificar Paciente
 
     public void ModificarPaciente(String dni, String nombre, String domicilio, String mail, String sexo, int edad) {
@@ -233,11 +251,6 @@ public class SisLAB {
 
     }
     
-    
-    
 
-   
     
-    
-
 }
