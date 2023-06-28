@@ -10,6 +10,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.*;
 
 import Negocio.*;
+import java.util.ArrayList;
 
 /**
  *
@@ -23,46 +24,39 @@ public class vtnPacientes extends javax.swing.JFrame {
      */
     public vtnPacientes() {
         initComponents();
+        listarPacientesEnTabla();
+    }
         
+        
+    public void listarPacientesEnTabla(){
         String[] titulos = new String[]{"DNI","Paciente","Domicilio","Mail","Sexo","Edad"};
         modelo.setColumnIdentifiers(titulos);
-         
         
+        ArrayList<Paciente> listaP = SisLAB.getInstancia().listarPacientes();
         
-        //modelo.addRow(new Object[]{SisLAB.getInstancia().mostrarPaciente(String dni, String nombre)});
-        /*
-        String [] paciente2 = {"32456232","Marcelo Reynoso","Santa Fe 66","marcelo@yahoo.com","M","43"};
-        String [] paciente3 = {"16546789","Emilse Giovanetti","Brasil 1234","emilseo@gmail.com","F","74"};
-        String [] paciente4 = {"21654765","Josefina Constanzo","Maimaira 564","rollinga@uade.com","F","19"};
-        String [] paciente5 = {"23511334","Johan Veneco","Alberdi 56","Johan@veneco.vz","M","48"};
-        */
-        /*
-        modelo.addRow(paciente1);
-        modelo.addRow(paciente2);
-        modelo.addRow(paciente3);
-        modelo.addRow(paciente4);
-        modelo.addRow(paciente5);
-        */
-        
-        
-        Paciente listado = SisLAB.getInstancia().listarPacientes();
-        
-        
-        
-        
-        //System.out.println(listado.getMail());
-        
-      
-        
- 
-      
-         
-   
+        for(int i = 0; i < listaP.size();i++){
+            System.out.println(listaP.get(i).getNombre() + listaP.get(i).getDni());
+            //modelo.addRow(listaP.get(i).getNombre());
+            String[] paciente = new String[]{listaP.get(i).getDni(),listaP.get(i).getNombre(),listaP.get(i).getDomicilio(),listaP.get(i).getMail(),listaP.get(i).getSexo(),String.valueOf(listaP.get(i).getEdad())};
+            modelo.addRow(paciente);  
+            
+        }
         
         tblDatos.setModel(modelo);
     }
     
+    public void actualizarTabla(){
+        modelo.setRowCount(0);
+        listarPacientesEnTabla();
+        modelo.fireTableDataChanged();
+        tblDatos.repaint();
+        
+    }
     
+ 
+        
+    
+   
     
     /**
      * This method is called from within the constructor to initialize the form.

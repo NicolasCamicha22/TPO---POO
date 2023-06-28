@@ -11,24 +11,20 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
+import Views.vtnPacientes;
+
 /**
  *
  * @author lucho
  */
 public class vtnPacientesAlta extends javax.swing.JFrame {
 
-    DefaultTableModel modelo = new DefaultTableModel();
-
     /**
      * Creates new form vtnPacientesAlta
      */
     public vtnPacientesAlta() {
         initComponents();
-        String[] titulos = new String[]{"DNI", "Paciente", "Domicilio", "Mail", "Sexo", "Edad"};
-        modelo.setColumnIdentifiers(titulos);
         
-
-        jTable1.setModel(modelo);
     }
 
     /**
@@ -55,9 +51,6 @@ public class vtnPacientesAlta extends javax.swing.JFrame {
         txtSexo = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         txtEdad = new javax.swing.JTextField();
-        jPanel2 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -171,50 +164,19 @@ public class vtnPacientesAlta extends javax.swing.JFrame {
                 .addContainerGap(57, Short.MAX_VALUE))
         );
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Pacientes cargados"));
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jButton2)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 173, Short.MAX_VALUE)
-                            .addComponent(btnConfirmar)))
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(246, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 173, Short.MAX_VALUE)
+                        .addComponent(btnConfirmar)))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -225,8 +187,6 @@ public class vtnPacientesAlta extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
                     .addComponent(btnConfirmar))
-                .addGap(28, 28, 28)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -265,10 +225,12 @@ public class vtnPacientesAlta extends javax.swing.JFrame {
                     SisLAB.getInstancia().darDeAltaPaciente(txtDni.getText(), txtNombre.getText(), txtDomicilio.getText(),
                             txtMail.getText(), txtSexo.getText(), edad);
 
-                    Paciente listarPacientes = SisLAB.getInstancia().listarPacientes();
+                    //Paciente listarPacientes = SisLAB.getInstancia().listarPacientes();
                     
                     JOptionPane.showMessageDialog(null, "Alta efectuada");
-                    modelo.addRow(new Object[]{txtDni.getText(), txtNombre.getText(), txtDomicilio.getText(), txtMail.getText(), txtSexo.getText(), txtEdad.getText()});
+                    //modelo.addRow(new Object[]{txtDni.getText(), txtNombre.getText(), txtDomicilio.getText(), txtMail.getText(), txtSexo.getText(), txtEdad.getText()});
+                    //vtnPacientes vtp = new vtnPacientes();
+                    //vtp.modelo.addRow(new Object[]{txtDni.getText(), txtNombre.getText(), txtDomicilio.getText(), txtMail.getText(), txtSexo.getText(), txtEdad.getText()});
 
 
                     txtDni.setText("");
@@ -278,8 +240,12 @@ public class vtnPacientesAlta extends javax.swing.JFrame {
                     txtSexo.setText("");
                     txtEdad.setText("");
 
-                    //this.dispose();
-
+                    
+                    //vtnPacientes vtn = new vtnPacientes();
+                    //vtn.listarPacientesEnTabla(); 
+                    this.dispose();
+               
+                              
                 } else {
                     JOptionPane.showMessageDialog(null, "Paciente ya registrado");
                 }
@@ -350,9 +316,6 @@ public class vtnPacientesAlta extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField txtDni;
     private javax.swing.JTextField txtDomicilio;
     private javax.swing.JTextField txtEdad;

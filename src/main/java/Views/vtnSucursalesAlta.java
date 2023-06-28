@@ -13,12 +13,12 @@ import javax.swing.JOptionPane;
  *
  * @author lucho
  */
-public class vtnSucursalesAltaEdita extends javax.swing.JFrame {
+public class vtnSucursalesAlta extends javax.swing.JFrame {
 
     /**
      * Creates new form vtnSucursalesAlta
      */
-    public vtnSucursalesAltaEdita() {
+    public vtnSucursalesAlta() {
         initComponents();
     }
 
@@ -156,14 +156,9 @@ public class vtnSucursalesAltaEdita extends javax.swing.JFrame {
                 
                 txtNroSucursal.setText("");
                 txtDireccion.setText("");
-                txtResponsable.setText("");
-               
-                
-                
-                
+                txtResponsable.setText("");          
 								
-                                                                
-
+                this.dispose();
                 
             } else {
                 JOptionPane.showMessageDialog(null, "Sucursal ya registrada");
@@ -195,21 +190,23 @@ public class vtnSucursalesAltaEdita extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(vtnSucursalesAltaEdita.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(vtnSucursalesAlta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(vtnSucursalesAltaEdita.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(vtnSucursalesAlta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(vtnSucursalesAltaEdita.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(vtnSucursalesAlta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(vtnSucursalesAltaEdita.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(vtnSucursalesAlta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new vtnSucursalesAltaEdita().setVisible(true);
+                new vtnSucursalesAlta().setVisible(true);
             }
         });
     }
