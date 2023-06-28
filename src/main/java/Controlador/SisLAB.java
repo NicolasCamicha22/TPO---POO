@@ -38,7 +38,7 @@ public class SisLAB {
     }
 
     private void cargaInicial() { //datos hardcodeados
-        darDeAltaPaciente("42323", "nicolas", "moron 777", "mailito@gmail.com", "masculino", 22);
+        darDeAltaPaciente("42323", "Nicolas Camicha", "moron 777", "mailito@gmail.com", "masculino", 22);
         darDeAltaPaciente("33443284","Luciano Arias","Pedraza 2566","lucho@uade.com","M",35);
         darDeAltaPaciente("32456232","Marcelo Reynoso","Santa Fe 66","marcelo@yahoo.com","M",43);
         darDeAltaPaciente("16546789","Emilse Giovanetti","Brasil 1234","emilseo@gmail.com","F",74);
@@ -50,11 +50,11 @@ public class SisLAB {
         altaSucursal("1973", "Maipu 3453", "Karina Blois");
         altaSucursal("4543", "Madrid 223", "Samanta Garcia");
         
-        altaPeticion("111", "Tomas Aguirre", "11113", "04/05/2023", "4", "10/05/2023");
-        altaPeticion("232", "Laura Oliva", "34234", "23/02/2023", "2", "07/06/2023");
-        altaPeticion("343", "Fernando Vallejos", "56327", "12/06/2023", "3", "18/06/2023");
-        altaPeticion("553", "Diego Almada", "45774", "18/06/2023", "6", "23/06/2023");
-        altaPeticion("234", "Roxana Sussini", "23456", "23/05/2023", "1", "25/06/2023");
+        altaPeticion("111", "Nicolas Camicha", "11113", "04/05/2023", "4", "10/05/2023");
+        altaPeticion("232", "Nicolas Camicha", "34234", "23/02/2023", "2", "07/06/2023");
+        altaPeticion("343", "Emilse Giovanetti", "56327", "12/06/2023", "3", "18/06/2023");
+        altaPeticion("553", "Nicolas Camicha", "45774", "18/06/2023", "6", "23/06/2023");
+        altaPeticion("234", "Johan Veneco", "23456", "23/05/2023", "1", "25/06/2023");
         
         altaPractica("22","Analisis de sangre","A","43","208","8","0");
         altaPractica("12","Hemograma","A","12","123","12","1");
