@@ -37,7 +37,7 @@ public class vtnPracticaBaja extends javax.swing.JFrame {
         btnConfirmarBaja = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Eliminar Practica"));
 
@@ -127,6 +127,8 @@ public class vtnPracticaBaja extends javax.swing.JFrame {
                     SisLAB.getInstancia().BorrarPractica(txtCodigo.getText());
 
                     JOptionPane.showMessageDialog(null, "Practica eliminada");
+                    
+                    this.dispose();
                 }
 
             } else {

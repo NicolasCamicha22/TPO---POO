@@ -5,9 +5,7 @@
 package Views;
 
 import Controlador.SisLAB;
-import Negocio.Paciente;
-import Negocio.PeticionView;
-import Negocio.SucursalView;
+import Negocio.*;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
@@ -18,6 +16,7 @@ import javax.swing.JOptionPane;
  */
 public class vtnPeticionesAlta extends javax.swing.JFrame {
     DefaultComboBoxModel comboBoxModel = new DefaultComboBoxModel();
+    DefaultComboBoxModel cmbSuc = new DefaultComboBoxModel();
 
     /**
      * Creates new form vtnPeticionAltaEdita
@@ -25,6 +24,7 @@ public class vtnPeticionesAlta extends javax.swing.JFrame {
     public vtnPeticionesAlta() {
         initComponents();
         listarPacientesComboBox();
+        listarSucursalesComboBox();
     }
     
     public void listarPacientesComboBox(){
@@ -41,6 +41,22 @@ public class vtnPeticionesAlta extends javax.swing.JFrame {
         
         cmbPacientes.setModel(comboBoxModel);
     }
+    
+    public void listarSucursalesComboBox(){
+        ArrayList<Sucursal> listaP = SisLAB.getInstancia().listarSucursales();
+        
+        for(int i = 0; i < listaP.size();i++){
+            //System.out.println(listaP.get(i).getNombre() + listaP.get(i).getDni());
+            //modelo.addRow(listaP.get(i).getNombre());
+            String[] sucursal = new String[]{listaP.get(i).getNroSucursal()};
+            //modelo.addRow(paciente);  
+            cmbSuc.addElement(sucursal[0]);
+            
+        }
+        
+        cmbSucursales.setModel(cmbSuc);
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -64,6 +80,8 @@ public class vtnPeticionesAlta extends javax.swing.JFrame {
         txtPracticasAsociadas = new javax.swing.JTextField();
         txtFechaEstimadaEntrega = new javax.swing.JTextField();
         cmbPacientes = new javax.swing.JComboBox<>();
+        jLabel7 = new javax.swing.JLabel();
+        cmbSucursales = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
@@ -96,6 +114,10 @@ public class vtnPeticionesAlta extends javax.swing.JFrame {
             }
         });
 
+        jLabel7.setText("Sucursal:");
+
+        cmbSucursales.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -103,6 +125,7 @@ public class vtnPeticionesAlta extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel7)
                     .addComponent(jLabel5)
                     .addComponent(jLabel2)
                     .addComponent(jLabel1)
@@ -112,16 +135,17 @@ public class vtnPeticionesAlta extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtNroPeticion)
-                            .addComponent(txtFechaDeCarga)
-                            .addComponent(txtPracticasAsociadas)
-                            .addComponent(txtFechaEstimadaEntrega, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
-                            .addComponent(txtObraSocial))
-                        .addGap(32, 32, 32))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(cmbPacientes, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(cmbSucursales, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtNroPeticion, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtFechaDeCarga, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtPracticasAsociadas, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtFechaEstimadaEntrega, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
+                            .addComponent(txtObraSocial, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addGap(32, 32, 32))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -150,7 +174,10 @@ public class vtnPeticionesAlta extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(txtFechaEstimadaEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 30, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(cmbSucursales, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         jButton1.setText("Confirmar");
@@ -193,7 +220,7 @@ public class vtnPeticionesAlta extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         pack();
@@ -317,6 +344,7 @@ public class vtnPeticionesAlta extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cmbPacientes;
+    private javax.swing.JComboBox<String> cmbSucursales;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
@@ -325,6 +353,7 @@ public class vtnPeticionesAlta extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txtFechaDeCarga;
     private javax.swing.JTextField txtFechaEstimadaEntrega;
