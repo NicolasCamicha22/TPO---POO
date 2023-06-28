@@ -5,8 +5,8 @@
 package Views;
 
 import Controlador.SisLAB;
-import Negocio.PacienteView;
-import Negocio.SucursalView;
+import Negocio.*;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -121,22 +121,46 @@ public class vtnSucursalesBaja extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(txtNroSucursal, "Complete el campo Nro Sucursal");
         } else {
             SucursalView sucursal = SisLAB.getInstancia().buscarSucursalView(txtNroSucursal.getText());
-            if (sucursal != null) {
+            
+            ArrayList<Peticion> listPeticiones = SisLAB.getInstancia().listarPeticiones();
+            
+            int flag = 0;
+            
+            for(int i = 0; i < listPeticiones.size();i++){
+                if(listPeticiones.get(i).getNroSucursal().equals(txtNroSucursal.getText())){
+                    flag = 1;
+                }
+             
+            //System.out.println(listPeticiones.get(i).getNroSucursal());
+            //String[] peticion = new String[]{listPeticiones.get(i).getNroSucursal()};
+              
+        }
+            
+            
+    
+            
+            if ((sucursal != null) && flag == 0) {
                 if (JOptionPane.showConfirmDialog(btnConfirmarBaja,
                         "¿Esta seguro de eliminar la sucursal?", "Salir", JOptionPane.YES_NO_OPTION,
                         JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION) {
+                    
+                    
+                    
                     SisLAB.getInstancia().BorrarSucursal(txtNroSucursal.getText());
 
                     JOptionPane.showMessageDialog(null, "Sucursal eliminada");
                 }
 
             } else {
-                JOptionPane.showMessageDialog(null, "Sucursal no encontrada");
+                JOptionPane.showMessageDialog(null, "Sucursal no encontrada o con peticiones abiertas");
 
             }
         }
     }//GEN-LAST:event_btnConfirmarBajaActionPerformed
 
+    
+  
+    
     /**
      * @param args the command line arguments
      */

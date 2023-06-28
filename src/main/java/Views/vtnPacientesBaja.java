@@ -6,6 +6,8 @@ package Views;
 
 import Controlador.SisLAB;
 import Negocio.PacienteView;
+import Negocio.Peticion;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -118,7 +120,26 @@ public class vtnPacientesBaja extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(txtDni, "Complete el campo DNI");
         } else {
             PacienteView paciente = SisLAB.getInstancia().buscarPacienteView(txtDni.getText());
-            if (paciente != null) {
+            
+             ArrayList<Peticion> listPeticiones = SisLAB.getInstancia().listarPeticiones();
+            
+            int flag = 0;
+            
+            for(int i = 0; i < listPeticiones.size();i++){
+                if(listPeticiones.get(i).getPaciente().equals(txtDni.getText())){
+                    flag = 1;
+                }
+             
+            //System.out.println(listPeticiones.get(i).getNroSucursal());
+            //String[] peticion = new String[]{listPeticiones.get(i).getNroSucursal()};
+              
+        }
+            
+            
+      
+            
+            
+            if (paciente != null && flag == 0) {
                 if (JOptionPane.showConfirmDialog(btnConfirmarBaja,
                         "¿Esta seguro de eliminar el paciente?", "Salir", JOptionPane.YES_NO_OPTION,
                         JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION) {
@@ -131,7 +152,7 @@ public class vtnPacientesBaja extends javax.swing.JFrame {
                 }
 
             } else {
-                JOptionPane.showMessageDialog(null, "Paciente no encontrado");
+                JOptionPane.showMessageDialog(null, "Paciente no encontrado o con peticiones abiertas");
 
             }
         }

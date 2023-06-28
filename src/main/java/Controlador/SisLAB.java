@@ -50,11 +50,11 @@ public class SisLAB {
         altaSucursal("1973", "Maipu 3453", "Karina Blois");
         altaSucursal("4543", "Madrid 223", "Samanta Garcia");
         
-        altaPeticion("111", "Nicolas Camicha", "11113", "04/05/2023", "4", "10/05/2023");
-        altaPeticion("232", "Nicolas Camicha", "34234", "23/02/2023", "2", "07/06/2023");
-        altaPeticion("343", "Emilse Giovanetti", "56327", "12/06/2023", "3", "18/06/2023");
-        altaPeticion("553", "Nicolas Camicha", "45774", "18/06/2023", "6", "23/06/2023");
-        altaPeticion("234", "Johan Veneco", "23456", "23/05/2023", "1", "25/06/2023");
+        altaPeticion("111", "2322","42323", "11113", "04/05/2023", "22", "10/05/2023");
+        altaPeticion("232","2322", "42323", "34234", "23/02/2023", "12", "07/06/2023");
+        altaPeticion("343","0208", "16546789", "56327", "12/06/2023", "12", "18/06/2023");
+        altaPeticion("553","4543", "42323", "45774", "18/06/2023", "08", "23/06/2023");
+        altaPeticion("234","2322", "23511334", "23456", "23/05/2023", "14", "25/06/2023");
         
         altaPractica("22","Analisis de sangre","A","43","208","8","0");
         altaPractica("12","Hemograma","A","12","123","12","1");
@@ -200,8 +200,8 @@ public class SisLAB {
 
     // Peticiones
     // Alta de peticion
-    public void altaPeticion(String nroPeticion, String paciente, String obraSocial, String fechaDeCarga, String practicasAsociadas, String fechaEstimadaEntrega) {
-        Peticion peticion = new Peticion(nroPeticion, paciente, obraSocial, fechaDeCarga, practicasAsociadas, fechaEstimadaEntrega);
+    public void altaPeticion(String nroPeticion,String nroSucursal, String paciente, String obraSocial, String fechaDeCarga, String practicasAsociadas, String fechaEstimadaEntrega) {
+        Peticion peticion = new Peticion(nroPeticion, nroSucursal, paciente, obraSocial, fechaDeCarga, practicasAsociadas, fechaEstimadaEntrega);
         listaPeticiones.add(peticion);
     }
 
@@ -233,8 +233,7 @@ public class SisLAB {
             listaPeticiones.remove(ExistePeticion);
 
         }
-
-    }
+    } 
      //Modificar peticion
     public void ModificarPeticion(String nroPeticion, String paciente, String obraSocial, String fechaDeCarga, String practicasAsociadas,String fechaEstimadaEntrega) {
 

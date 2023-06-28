@@ -9,20 +9,31 @@ package Negocio;
  * @author nicol
  */
 public class PeticionView {
-       private String nroPeticion;
+
+    private String nroPeticion;
+    private String nroSucursal;
     private String paciente;
     private String obraSocial;
     private String fechaDeCarga;
     private String practicasAsociadas;
     private String fechaEstimadaEntrega;
 
-    public PeticionView(String nroPeticion, String paciente, String obraSocial, String fechaDeCarga, String practicasAsociadas,String fechaEstimadaEntrega) {
+    public PeticionView(String nroPeticion, String nroSucursal, String paciente, String obraSocial, String fechaDeCarga, String practicasAsociadas, String fechaEstimadaEntrega) {
         this.nroPeticion = nroPeticion;
+        this.nroSucursal = nroSucursal;
         this.paciente = paciente;
         this.obraSocial = obraSocial;
         this.fechaDeCarga = fechaDeCarga;
         this.practicasAsociadas = practicasAsociadas;
         this.fechaEstimadaEntrega = fechaEstimadaEntrega;
+    }
+
+    public String getNroSucursal() {
+        return nroSucursal;
+    }
+
+    public void setNroSucursal(String nroSucursal) {
+        this.nroSucursal = nroSucursal;
     }
 
     public String getNroPeticion() {
@@ -72,5 +83,5 @@ public class PeticionView {
     public void setFechaEstimadaEntrega(String fechaEstimadaEntrega) {
         this.fechaEstimadaEntrega = fechaEstimadaEntrega;
     }
-    
+
 }

@@ -17,6 +17,7 @@ import javax.swing.JOptionPane;
 public class vtnPeticionesAlta extends javax.swing.JFrame {
     DefaultComboBoxModel comboBoxModel = new DefaultComboBoxModel();
     DefaultComboBoxModel cmbSuc = new DefaultComboBoxModel();
+    DefaultComboBoxModel cmbPA = new DefaultComboBoxModel();
 
     /**
      * Creates new form vtnPeticionAltaEdita
@@ -25,6 +26,7 @@ public class vtnPeticionesAlta extends javax.swing.JFrame {
         initComponents();
         listarPacientesComboBox();
         listarSucursalesComboBox();
+        listarPracticasComboBox();
     }
     
     public void listarPacientesComboBox(){
@@ -33,7 +35,7 @@ public class vtnPeticionesAlta extends javax.swing.JFrame {
         for(int i = 0; i < listaP.size();i++){
             //System.out.println(listaP.get(i).getNombre() + listaP.get(i).getDni());
             //modelo.addRow(listaP.get(i).getNombre());
-            String[] paciente = new String[]{listaP.get(i).getNombre()};
+            String[] paciente = new String[]{listaP.get(i).getDni()};
             //modelo.addRow(paciente);  
             comboBoxModel.addElement(paciente[0]);
             
@@ -56,6 +58,21 @@ public class vtnPeticionesAlta extends javax.swing.JFrame {
         
         cmbSucursales.setModel(cmbSuc);
     }
+    
+     public void listarPracticasComboBox(){
+        ArrayList<Practica> listaP = SisLAB.getInstancia().listarPracticas();
+        
+        for(int i = 0; i < listaP.size();i++){
+            //System.out.println(listaP.get(i).getNombre() + listaP.get(i).getDni());
+            //modelo.addRow(listaP.get(i).getNombre());
+            String[] practica = new String[]{listaP.get(i).getCodigoPractica()};
+            //modelo.addRow(paciente);  
+            cmbPA.addElement(practica[0]);
+            
+        }
+        
+        cmbPracticas.setModel(cmbPA);
+    }
 
 
     /**
@@ -77,15 +94,15 @@ public class vtnPeticionesAlta extends javax.swing.JFrame {
         txtNroPeticion = new javax.swing.JTextField();
         txtObraSocial = new javax.swing.JTextField();
         txtFechaDeCarga = new javax.swing.JTextField();
-        txtPracticasAsociadas = new javax.swing.JTextField();
         txtFechaEstimadaEntrega = new javax.swing.JTextField();
         cmbPacientes = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
         cmbSucursales = new javax.swing.JComboBox<>();
+        cmbPracticas = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Nueva Peticion"));
 
@@ -118,6 +135,8 @@ public class vtnPeticionesAlta extends javax.swing.JFrame {
 
         cmbSucursales.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        cmbPracticas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -139,10 +158,10 @@ public class vtnPeticionesAlta extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(cmbPracticas, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(cmbSucursales, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtNroPeticion, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtFechaDeCarga, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtPracticasAsociadas, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtFechaEstimadaEntrega, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
                             .addComponent(txtObraSocial, javax.swing.GroupLayout.Alignment.LEADING))
                         .addGap(32, 32, 32))))
@@ -169,7 +188,7 @@ public class vtnPeticionesAlta extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(txtPracticasAsociadas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbPracticas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -240,7 +259,7 @@ public class vtnPeticionesAlta extends javax.swing.JFrame {
         if (txtNroPeticion.getText().isEmpty() || cmbPacientes.getSelectedItem().equals(null)
 						|| txtObraSocial.getText().isEmpty()
                 || txtFechaDeCarga.getText().isEmpty()
-                || txtPracticasAsociadas.getText().isEmpty()
+                || cmbPracticas.getSelectedItem().equals(null)
                 || txtFechaEstimadaEntrega.getText().isEmpty()) {
 					JOptionPane.showMessageDialog(txtNroPeticion, "Complete todos los campos");
         }  else {
@@ -255,7 +274,7 @@ public class vtnPeticionesAlta extends javax.swing.JFrame {
                 int obraSocial = Integer.parseInt(txtObraSocial.getText());
         
                 
-                SisLAB.getInstancia().altaPeticion(txtNroPeticion.getText(), (String) cmbPacientes.getSelectedItem(), txtObraSocial.getText(), txtFechaDeCarga.getText(),txtPracticasAsociadas.getText(),txtFechaEstimadaEntrega.getText());
+                SisLAB.getInstancia().altaPeticion(txtNroPeticion.getText(),  (String) cmbSucursales.getSelectedItem(),(String) cmbPacientes.getSelectedItem(), txtObraSocial.getText(), txtFechaDeCarga.getText(),String.valueOf(cmbPracticas.getSelectedItem()),txtFechaEstimadaEntrega.getText());
                 
                 
                 JOptionPane.showMessageDialog(null, "Alta efectuada");
@@ -264,8 +283,11 @@ public class vtnPeticionesAlta extends javax.swing.JFrame {
                 cmbPacientes.getSelectedItem();
                 txtObraSocial.setText("");
                 txtFechaDeCarga.setText("");
-                txtPracticasAsociadas.setText("");
+                cmbPracticas.getSelectedItem();
                 txtFechaEstimadaEntrega.setText("");
+                
+                
+                this.dispose();
                
                 
                 
@@ -344,6 +366,7 @@ public class vtnPeticionesAlta extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cmbPacientes;
+    private javax.swing.JComboBox<String> cmbPracticas;
     private javax.swing.JComboBox<String> cmbSucursales;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -359,6 +382,5 @@ public class vtnPeticionesAlta extends javax.swing.JFrame {
     private javax.swing.JTextField txtFechaEstimadaEntrega;
     private javax.swing.JTextField txtNroPeticion;
     private javax.swing.JTextField txtObraSocial;
-    private javax.swing.JTextField txtPracticasAsociadas;
     // End of variables declaration//GEN-END:variables
 }
