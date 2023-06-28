@@ -16,11 +16,11 @@ public class Practica {
         private String grupo;
         private String valorCritico;
         private String valorReservado;
-        private int cantHoras;
+        private String cantHoras;
         private String estado;
         
 
-        public Practica(String codigoPractica, String nombrePractica, String grupo, String valorCritico, String valorReservado, int cantHoras, String estado) {
+        public Practica(String codigoPractica, String nombrePractica, String grupo, String valorCritico, String valorReservado, String cantHoras, String estado) {
             this.codigoPractica = codigoPractica;
             this.nombrePractica = nombrePractica;
             this.grupo = grupo;
@@ -72,11 +72,11 @@ public class Practica {
         this.valorReservado = valorReservado;
     }
 
-    public int getCantHoras() {
+    public String getCantHoras() {
         return cantHoras;
     }
 
-    public void setCantHoras(int cantHoras) {
+    public void setCantHoras(String cantHoras) {
         this.cantHoras = cantHoras;
     }
 
