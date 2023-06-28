@@ -5,21 +5,41 @@
 package Views;
 
 import Controlador.SisLAB;
+import Negocio.Paciente;
 import Negocio.PeticionView;
 import Negocio.SucursalView;
+import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author lucho
  */
-public class vtnPeticionesAltaEdita extends javax.swing.JFrame {
+public class vtnPeticionesAlta extends javax.swing.JFrame {
+    DefaultComboBoxModel comboBoxModel = new DefaultComboBoxModel();
 
     /**
      * Creates new form vtnPeticionAltaEdita
      */
-    public vtnPeticionesAltaEdita() {
+    public vtnPeticionesAlta() {
         initComponents();
+        listarPacientesComboBox();
+    }
+    
+    public void listarPacientesComboBox(){
+        ArrayList<Paciente> listaP = SisLAB.getInstancia().listarPacientes();
+        
+        for(int i = 0; i < listaP.size();i++){
+            //System.out.println(listaP.get(i).getNombre() + listaP.get(i).getDni());
+            //modelo.addRow(listaP.get(i).getNombre());
+            String[] paciente = new String[]{listaP.get(i).getNombre()};
+            //modelo.addRow(paciente);  
+            comboBoxModel.addElement(paciente[0]);
+            
+        }
+        
+        cmbPacientes.setModel(comboBoxModel);
     }
 
     /**
@@ -39,14 +59,13 @@ public class vtnPeticionesAltaEdita extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         txtNroPeticion = new javax.swing.JTextField();
-        txtPaciente = new javax.swing.JTextField();
         txtObraSocial = new javax.swing.JTextField();
         txtFechaDeCarga = new javax.swing.JTextField();
         txtPracticasAsociadas = new javax.swing.JTextField();
         txtFechaEstimadaEntrega = new javax.swing.JTextField();
+        cmbPacientes = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -70,6 +89,13 @@ public class vtnPeticionesAltaEdita extends javax.swing.JFrame {
             }
         });
 
+        cmbPacientes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbPacientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbPacientesActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -85,13 +111,17 @@ public class vtnPeticionesAltaEdita extends javax.swing.JFrame {
                     .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtNroPeticion)
-                    .addComponent(txtFechaDeCarga)
-                    .addComponent(txtPracticasAsociadas)
-                    .addComponent(txtFechaEstimadaEntrega, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
-                    .addComponent(txtPaciente)
-                    .addComponent(txtObraSocial))
-                .addGap(32, 32, 32))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtNroPeticion)
+                            .addComponent(txtFechaDeCarga)
+                            .addComponent(txtPracticasAsociadas)
+                            .addComponent(txtFechaEstimadaEntrega, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
+                            .addComponent(txtObraSocial))
+                        .addGap(32, 32, 32))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(cmbPacientes, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -103,7 +133,7 @@ public class vtnPeticionesAltaEdita extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(txtPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbPacientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -137,13 +167,6 @@ public class vtnPeticionesAltaEdita extends javax.swing.JFrame {
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -156,12 +179,9 @@ public class vtnPeticionesAltaEdita extends javax.swing.JFrame {
                         .addGap(0, 56, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(6, 6, 6)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton1)))))
+                        .addComponent(jButton2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -173,9 +193,7 @@ public class vtnPeticionesAltaEdita extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
-                .addGap(40, 40, 40)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         pack();
@@ -192,7 +210,7 @@ public class vtnPeticionesAltaEdita extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        if (txtNroPeticion.getText().isEmpty() || txtPaciente.getText().isEmpty()
+        if (txtNroPeticion.getText().isEmpty() || cmbPacientes.getSelectedItem().equals(null)
 						|| txtObraSocial.getText().isEmpty()
                 || txtFechaDeCarga.getText().isEmpty()
                 || txtPracticasAsociadas.getText().isEmpty()
@@ -210,13 +228,13 @@ public class vtnPeticionesAltaEdita extends javax.swing.JFrame {
                 int obraSocial = Integer.parseInt(txtObraSocial.getText());
         
                 
-                SisLAB.getInstancia().altaPeticion(txtNroPeticion.getText(),txtPaciente.getText(), txtObraSocial.getText(), txtFechaDeCarga.getText(),txtPracticasAsociadas.getText(),txtFechaEstimadaEntrega.getText());
+                SisLAB.getInstancia().altaPeticion(txtNroPeticion.getText(), (String) cmbPacientes.getSelectedItem(), txtObraSocial.getText(), txtFechaDeCarga.getText(),txtPracticasAsociadas.getText(),txtFechaEstimadaEntrega.getText());
                 
                 
                 JOptionPane.showMessageDialog(null, "Alta efectuada");
                 
                 txtNroPeticion.setText("");
-                txtPaciente.setText("");
+                cmbPacientes.getSelectedItem();
                 txtObraSocial.setText("");
                 txtFechaDeCarga.setText("");
                 txtPracticasAsociadas.setText("");
@@ -242,10 +260,10 @@ public class vtnPeticionesAltaEdita extends javax.swing.JFrame {
         }                                     
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void cmbPacientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbPacientesActionPerformed
         // TODO add your handling code here:
         
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_cmbPacientesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -264,29 +282,43 @@ public class vtnPeticionesAltaEdita extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(vtnPeticionesAltaEdita.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(vtnPeticionesAlta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(vtnPeticionesAltaEdita.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(vtnPeticionesAlta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(vtnPeticionesAltaEdita.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(vtnPeticionesAlta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(vtnPeticionesAltaEdita.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(vtnPeticionesAlta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new vtnPeticionesAltaEdita().setVisible(true);
+                new vtnPeticionesAlta().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> cmbPacientes;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -298,7 +330,6 @@ public class vtnPeticionesAltaEdita extends javax.swing.JFrame {
     private javax.swing.JTextField txtFechaEstimadaEntrega;
     private javax.swing.JTextField txtNroPeticion;
     private javax.swing.JTextField txtObraSocial;
-    private javax.swing.JTextField txtPaciente;
     private javax.swing.JTextField txtPracticasAsociadas;
     // End of variables declaration//GEN-END:variables
 }

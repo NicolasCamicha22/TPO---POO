@@ -56,11 +56,11 @@ public class SisLAB {
         altaPeticion("553", "Diego Almada", "45774", "18/06/2023", "6", "23/06/2023");
         altaPeticion("234", "Roxana Sussini", "23456", "23/05/2023", "1", "25/06/2023");
         
-        altaPractica("22","Analisis de sangre","A","43","208","8","sin problemas");
-        altaPractica("12","Hemograma","A","12","123","12","sin problemas");
-        altaPractica("17","TestEmbarazo","A","14","18","6","sin problemas");
-        altaPractica("08","Epoc","B","120","500","8","sin problemas");
-        altaPractica("14","Ergometria","B","56","789","1500","sin problemas");
+        altaPractica("22","Analisis de sangre","A","43","208","8","0");
+        altaPractica("12","Hemograma","A","12","123","12","1");
+        altaPractica("17","TestEmbarazo","A","14","18","6","1");
+        altaPractica("08","Epoc","B","120","500","8","0");
+        altaPractica("14","Ergometria","B","56","789","1500","0");
     }
 
     public static SisLAB getInstancia() {
@@ -115,6 +115,11 @@ public class SisLAB {
     //Listar Practicas
     public ArrayList<Practica> listarPracticas(){
         return listaPracticas;
+    }
+    
+    //Listar Practicas
+    public ArrayList<Peticion> listarPeticiones(){
+        return listaPeticiones;
     }
        
 
@@ -282,7 +287,7 @@ public class SisLAB {
     public void BorrarPractica(String nroPractica) {
         Practica ExistePractica = buscarPractica(nroPractica);
         if (ExistePractica != null) {
-            listaPeticiones.remove(ExistePractica);
+            listaPracticas.remove(ExistePractica);
 
         }
 
