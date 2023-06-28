@@ -128,7 +128,7 @@ public class vtnPracticas extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        vtnPracticasAltaEdita v = new vtnPracticasAltaEdita();
+        vtnPracticaEdita v = new vtnPracticaEdita();
         v.setLocationRelativeTo(null);
         v.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed

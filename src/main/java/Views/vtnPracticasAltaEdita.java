@@ -205,7 +205,7 @@ public class vtnPracticasAltaEdita extends javax.swing.JFrame {
                
                 
                 SisLAB.getInstancia().altaPractica(txtCodigo.getText(),txtNombre.getText(), txtGrupo.getText(),
-                        txtValoresCriticos.getText(), txtValoresReservados.getText(), txtCantHoras.getColumns(), txtEstado.getText() );
+                        txtValoresCriticos.getText(), txtValoresReservados.getText(), txtCantHoras.getText(), txtEstado.getText() );
                 
                 JOptionPane.showMessageDialog(null, "Alta efectuada");
                 

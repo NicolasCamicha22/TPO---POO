@@ -26,9 +26,11 @@ public class vtnPacientes extends javax.swing.JFrame {
         
         String[] titulos = new String[]{"DNI","Paciente","Domicilio","Mail","Sexo","Edad"};
         modelo.setColumnIdentifiers(titulos);
+         
         
+        
+        //modelo.addRow(new Object[]{SisLAB.getInstancia().mostrarPaciente(String dni, String nombre)});
         /*
-        SisLAB.getInstancia().darDeAltaPaciente("33443284","Luciano Arias","Pedraza 2566","lucho@uade.com","M",35);
         String [] paciente2 = {"32456232","Marcelo Reynoso","Santa Fe 66","marcelo@yahoo.com","M","43"};
         String [] paciente3 = {"16546789","Emilse Giovanetti","Brasil 1234","emilseo@gmail.com","F","74"};
         String [] paciente4 = {"21654765","Josefina Constanzo","Maimaira 564","rollinga@uade.com","F","19"};

@@ -46,7 +46,7 @@ public class SisLAB {
   
         altaSucursal("2322", "callefalsa 123", "Carlos");
         altaPeticion("111", "Tomas", "11113", "4/05/2023", "4", "25/3/2022");
-        altaPractica("22","Analisis de sangre","A","43","208",24,"sin problemas");
+        altaPractica("22","Analisis de sangre","A","43","208","8","sin problemas");
     }
 
     public static SisLAB getInstancia() {
@@ -93,7 +93,7 @@ public class SisLAB {
         
         for(int i = 0; i < listaPacientes.size(); i++){
             Paciente  paciente = listaPacientes.get(i);
-            System.out.println(paciente.getNombre());
+            paciente.getNombre();
         }
         return null;
     }
@@ -211,11 +211,29 @@ public class SisLAB {
         }
 
     }
+     //Modificar peticion
+    public void ModificarPeticion(String nroPeticion, String paciente, String obraSocial, String fechaDeCarga, String practicasAsociadas,String fechaEstimadaEntrega) {
+
+        Peticion ExistePeticion = buscarPeticion(nroPeticion);
+        if (ExistePeticion != null) {
+            ExistePeticion.setNroPeticion(nroPeticion);
+            ExistePeticion.setPaciente(paciente);
+            ExistePeticion.setObraSocial(obraSocial);
+            ExistePeticion.setFechaDeCarga(fechaDeCarga);
+            ExistePeticion.setPracticasAsociadas(practicasAsociadas);
+            ExistePeticion.setFechaEstimadaEntrega(fechaEstimadaEntrega);
+          
+            
+            
+
+        }
+
+    }
     
     // Practicas
     
     // Alta de practicas
-    public void altaPractica(String codigoPractica, String nombrePractica, String grupo, String valorCritico, String valorReservado, int cantHoras, String estado) {
+    public void altaPractica(String codigoPractica, String nombrePractica, String grupo, String valorCritico, String valorReservado, String cantHoras, String estado) {
         Practica practica = new Practica( codigoPractica,  nombrePractica,  grupo,  valorCritico,  valorReservado,  cantHoras,  estado);
         listaPracticas.add(practica);
     }
@@ -250,6 +268,27 @@ public class SisLAB {
         }
 
     }
+    
+     //Modificar practica
+    public void ModificarPractica(String codigoPractica, String nombrePractica, String grupo, String valorCritico, String valorReservado, String cantHoras, String estado) {
+
+        Practica ExistePractica = buscarPractica(codigoPractica);
+        if (ExistePractica != null) {
+            ExistePractica.setCodigoPractica(codigoPractica);
+            ExistePractica.setNombrePractica(nombrePractica);
+            ExistePractica.setGrupo(grupo);
+            ExistePractica.setValorCritico(valorCritico);
+            ExistePractica.setValorReservado(valorReservado);
+            ExistePractica.setCantHoras(cantHoras);
+            ExistePractica.setEstado(estado);
+            
+            
+
+        }
+
+    }
+
+    
     
 
     
