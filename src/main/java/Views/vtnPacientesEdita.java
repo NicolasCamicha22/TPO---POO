@@ -244,6 +244,8 @@ public class vtnPacientesEdita extends javax.swing.JFrame {
                     txtMail.setText("");
                     txtSexo.setText("");
                     txtEdad.setText("");
+                    
+                    dispose();
 
                 } else {
                     JOptionPane.showMessageDialog(null, "Paciente no encontrado");

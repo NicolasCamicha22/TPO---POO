@@ -125,6 +125,9 @@ public class vtnPacientesBaja extends javax.swing.JFrame {
                     SisLAB.getInstancia().BorrarPaciente(txtDni.getText());
 
                     JOptionPane.showMessageDialog(null, "Paciente eliminado");
+                    
+                 
+                    this.dispose();
                 }
 
             } else {

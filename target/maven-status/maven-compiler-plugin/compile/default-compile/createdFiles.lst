@@ -9,9 +9,9 @@ Views/vtnPracticaBaja.class
 Views/vtnPracticasAltaEdita.class
 Views/vtnPrincipal$7.class
 Views/vtnPeticionesResultado.class
-Views/vtnSucursalesAltaEdita$3.class
 Views/vtnPeticionesEdita$1.class
 Views/vtnSucursalesBaja$2.class
+Views/vtnSucursalesAlta$1.class
 Views/vtnPeticiones$3.class
 Views/vtnPeticionesResultado$3.class
 Negocio/Sucursal.class
@@ -32,6 +32,7 @@ Views/vtnPeticionesEdita.class
 Views/vtnPacientes$3.class
 Views/vtnPacientesAlta$3.class
 Views/vtnSucursales$2.class
+Views/vtnSucursalesAlta$2.class
 Views/vtnSucursales$3.class
 Negocio/SucursalView.class
 Views/vtnPeticiones$1.class
@@ -41,6 +42,7 @@ Negocio/PracticaView.class
 Views/vtnSucursalesEdita$1.class
 Views/vtnPacientes$4.class
 Views/vtnPrincipal$3.class
+Views/vtnSucursalesAlta$3.class
 Views/vtnPeticionesAltaEdita$2.class
 Views/vtnPeticiones$2.class
 Views/vtnPeticionesEdita$2.class
@@ -73,7 +75,7 @@ Views/vtnPacientesBaja$3.class
 Views/vtnPeticionesEdita$5.class
 Views/vtnSucursalesBaja$1.class
 Views/vtnPrincipal$6.class
-Views/vtnSucursalesAltaEdita$2.class
+Views/vtnSucursalesAlta.class
 Negocio/PacienteView.class
 Views/vtnSucursalesEdita$5.class
 Views/vtnPracticaEdita$2.class
@@ -91,8 +93,6 @@ Views/vtnPracticaEdita.class
 Views/vtnPeticionesAltaEdita$5.class
 Views/vtnSucursalesEdita$4.class
 Views/vtnPeticionesEdita$3.class
-Views/vtnSucursalesAltaEdita.class
-Views/vtnSucursalesAltaEdita$1.class
 Views/vtnPacientesBaja$1.class
 Views/vtnPracticaEdita$3.class
 Views/vtnPracticas$3.class

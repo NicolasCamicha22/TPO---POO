@@ -26,8 +26,9 @@ public class SisLAB {
     private final ArrayList<Peticion> listaPeticiones;
     private final ArrayList<Practica> listaPracticas;
     private static SisLAB instancia;
+    
 
-    private SisLAB() {
+    public SisLAB() {
         super();
         this.listaPacientes = new ArrayList<Paciente>();
         this.listaSucursales = new ArrayList<Sucursal>();
@@ -44,9 +45,22 @@ public class SisLAB {
         darDeAltaPaciente("21654765","Josefina Constanzo","Maimaira 564","rollinga@uade.com","F",19);
         darDeAltaPaciente("23511334","Johan Veneco","Alberdi 56","Johan@veneco.vz","M",48);
   
-        altaSucursal("2322", "callefalsa 123", "Carlos");
-        altaPeticion("111", "Tomas", "11113", "4/05/2023", "4", "25/3/2022");
+        altaSucursal("2322", "Calle Falsa 123", "Carlos Sanchez");
+        altaSucursal("0208", "Av. Rivadavia 9001", "Rodrigo Vagoneta");
+        altaSucursal("1973", "Maipu 3453", "Karina Blois");
+        altaSucursal("4543", "Madrid 223", "Samanta Garcia");
+        
+        altaPeticion("111", "Tomas Aguirre", "11113", "04/05/2023", "4", "10/05/2023");
+        altaPeticion("232", "Laura Oliva", "34234", "23/02/2023", "2", "07/06/2023");
+        altaPeticion("343", "Fernando Vallejos", "56327", "12/06/2023", "3", "18/06/2023");
+        altaPeticion("553", "Diego Almada", "45774", "18/06/2023", "6", "23/06/2023");
+        altaPeticion("234", "Roxana Sussini", "23456", "23/05/2023", "1", "25/06/2023");
+        
         altaPractica("22","Analisis de sangre","A","43","208","8","sin problemas");
+        altaPractica("12","Hemograma","A","12","123","12","sin problemas");
+        altaPractica("17","TestEmbarazo","A","14","18","6","sin problemas");
+        altaPractica("08","Epoc","B","120","500","8","sin problemas");
+        altaPractica("14","Ergometria","B","56","789","1500","sin problemas");
     }
 
     public static SisLAB getInstancia() {
@@ -89,13 +103,18 @@ public class SisLAB {
     }
     
     //Listar Pacientes
-    public Paciente listarPacientes(){
-        
-        for(int i = 0; i < listaPacientes.size(); i++){
-            Paciente  paciente = listaPacientes.get(i);
-            paciente.getNombre();
-        }
-        return null;
+    public ArrayList<Paciente> listarPacientes(){
+        return listaPacientes;
+    }
+    
+    //Listar Sucursales
+    public ArrayList<Sucursal> listarSucursales(){
+        return listaSucursales;
+    }
+    
+    //Listar Practicas
+    public ArrayList<Practica> listarPracticas(){
+        return listaPracticas;
     }
        
 
