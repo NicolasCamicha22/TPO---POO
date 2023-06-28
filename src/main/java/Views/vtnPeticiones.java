@@ -26,14 +26,14 @@ public class vtnPeticiones extends javax.swing.JFrame {
     }
     
      public void listarPeticionesEnTabla(){
-        String[] titulos = new String[]{"Nº Peticion","Paciente","OOSS","Practica Asociada","Fec. Est. Entrega"};
+        String[] titulos = new String[]{"Nº Peticion","Suc","Paciente","OOSS","Practica Asociada","Fec. Est. Entrega"};
         modelo.setColumnIdentifiers(titulos);
         
         ArrayList<Peticion> listaS = SisLAB.getInstancia().listarPeticiones();
         
         for(int i = 0; i < listaS.size();i++){
             System.out.println(listaS.get(i).getNroPeticion());
-            String[] peticion = new String[]{listaS.get(i).getNroPeticion(),listaS.get(i).getPaciente(),listaS.get(i).getObraSocial(),listaS.get(i).getPracticasAsociadas(),listaS.get(i).getFechaEstimadaEntrega()};
+            String[] peticion = new String[]{listaS.get(i).getNroPeticion(),listaS.get(i).getNroSucursal(),listaS.get(i).getPaciente(),listaS.get(i).getObraSocial(),listaS.get(i).getPracticasAsociadas(),listaS.get(i).getFechaEstimadaEntrega()};
             modelo.addRow(peticion);   
         }
         
