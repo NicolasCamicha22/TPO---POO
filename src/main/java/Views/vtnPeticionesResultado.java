@@ -111,7 +111,7 @@ public class vtnPeticionesResultado extends javax.swing.JFrame {
 
     private void btnPeticionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPeticionesActionPerformed
         // TODO add your handling code here:
-        vtnPeticionesAltaEdita v = new vtnPeticionesAltaEdita();
+        vtnPeticionesAlta v = new vtnPeticionesAlta();
         v.setLocationRelativeTo(null);
         v.setVisible(true);
     }//GEN-LAST:event_btnPeticionesActionPerformed

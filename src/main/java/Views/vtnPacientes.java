@@ -45,14 +45,7 @@ public class vtnPacientes extends javax.swing.JFrame {
         tblDatos.setModel(modelo);
     }
     
-    public void actualizarTabla(){
-        modelo.setRowCount(0);
-        listarPacientesEnTabla();
-        modelo.fireTableDataChanged();
-        tblDatos.repaint();
-        
-    }
-    
+   
  
         
     
